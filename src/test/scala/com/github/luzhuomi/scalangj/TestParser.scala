@@ -134,3 +134,26 @@ class TestParser5 extends FunSuite with Matchers {
     assert((result.successful) && (result.get === CLASSDECL))
   }
 }
+
+class TestParser6 extends FunSuite with Matchers {
+  val STRING = "byte i = 1;"
+  val ty:Type = PrimType_(ByteT)
+  val vardecls:List[VarDecl] = List(VarDecl(VarId(Ident("i")), Some(InitExp(Lit(IntLit(1))))))
+  var LOCALVARDECL:(List[Modifier], Type, List[VarDecl]) = (Nil, ty, vardecls)
+
+  test(s"phrase ${STRING} is parsed correctly")
+  {
+    val result = localVarDecl(new Lexer.Scanner(STRING))
+    assert((result.successful) && (result.get === LOCALVARDECL))
+  }
+}
+
+/* ap << not sure how to proceed with this
+
+  class TestParser7 extends FunSuite with Matchers {
+  val STRING = "int[] x = new int[2];"
+  val ty:ArrayType = RefType_(IntT)
+
+  vardecls:List[VarDeclArray] = List(VarDecl(VarId(Ident("x")), InitArray()))
+}
+*/
