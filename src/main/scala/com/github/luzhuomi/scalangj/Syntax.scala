@@ -950,7 +950,6 @@ object Syntax {
     * A literal denotes a fixed, unchanging value.
     */
   sealed trait Literal
-  case class ByteLit(byt: Byte) extends Literal
   case class IntLit(i: Int) extends Literal
   case class LongLit(l: Long) extends Literal
   case class FloatLit(f: Float) extends Literal

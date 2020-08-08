@@ -555,7 +555,6 @@ object Pretty {
 
     implicit val literalPretty:Pretty[Literal] = new Pretty[Literal] {
         override def prettyPrec(p:Int, lit:Literal) : Doc = lit match {
-            case ByteLit(byt) => text(byt.toString())
             case IntLit(i) => text(i.toString())
             case LongLit(i) => text(i.toString()) + char('L')
             case FloatLit(f) => text(f.toString()) + char('F') 
